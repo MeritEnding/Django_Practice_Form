@@ -1,0 +1,28 @@
+# [파일명: projects\mysite\templates\pybo\question_form.html]
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <form method="post">  
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}
+
+"""
+action값을 지정하지 않으면 현재 페이지의 URL이 디폴트 action으로 설정된다
+ex) 현재 페이지가 질문등록이면 질문등록 페이지에 게시물을 생성하고 ,
+현재 페이지가 질문수정이면 질문수정 페이지에 게시물을 수정하게된다.
+
+반대로,
+<form method="post" action="{% url 'pybo:question_create' %}">로 명확하게 지정해도되지만 
+  이렇게 하면 템플릿은 질문등록에서만 사용가능하다
+
+결과적으로,
+  질문등록하기 버튼을 클릭하면 question_create로 이동하면서 질문등록 화면이 나오게 된다.
+
+  
+
+"""
